@@ -1,0 +1,26 @@
+// /etc/bind/zones/home.local.db
+
+$TTL    86400 ; 24 hours could have been written as 24h or 1d
+$ORIGIN home.local.
+@  IN SOA arpgatei.home.local. home.local. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+
+home.local. IN  NS   arpgate.home.local. 
+
+localhost IN A 127.0.0.1
+arpgate IN A 10.0.0.253
+block IN A 10.0.0.41
+compute1 IN A 10.0.0.31
+controller IN A 10.0.0.11
+network IN A 10.0.0.21
+object1 IN A 10.0.0.51
+object2 IN A 10.0.0.52
+pc IN A 10.0.0.2
+pi IN A 10.0.0.3
+router IN A 10.0.0.1
+switch IN A 10.0.0.254

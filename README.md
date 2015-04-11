@@ -1,2 +1,3 @@
-# service
-service exposing REST api and web interface
+# Service
+
+service to configure arpgate remotely

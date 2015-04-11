@@ -1,0 +1,24 @@
+// /etc/bind/zones/rev.0.0.10.in-addr.arpa
+
+
+$TTL    86400 ; 24 hours could have been written as 24h or 1d
+$ORIGIN 0.0.10.IN-ADDR.ARPA.
+@ IN 1D  SOA arpgate.home.local. arpgate.home.local.   (
+                             1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+@   IN NS arpgate.home.local.
+
+1 IN PTR router.home.local.
+2 IN PTR pc.home.local.
+3 IN PTR pi.home.local.
+11 IN PTR controller.home.local.
+21 IN PTR network.home.local.
+31 IN PTR compute1.home.local.
+41 IN PTR block1.home.local.
+51 IN PTR object1.hone.local.
+52 IN PTR object2.home.local.
+253 IN PTR arpgate.home.local.
+254 IN PTR switch.home.local.

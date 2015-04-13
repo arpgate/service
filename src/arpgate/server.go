@@ -32,6 +32,8 @@ func Start() {
 		return "0.0.1"
 	})
 
+	go ListenMqtt()
+
 	fmt.Println("Listening on http://localhost:3000")
 	m.Run()
 }

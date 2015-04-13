@@ -1,5 +1,7 @@
 package main
 
+// go get git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+
 import (
 	"arpgate"
 	"flag"

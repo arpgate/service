@@ -6,6 +6,7 @@ type Configuration struct {
 	ConfigVersion   int     `yaml:"configversion"`
 	SoftwareVersion int     `yaml:"softwareversion"`
 	Device          Device  `yaml:"device"`
+	Iptable         Iptable `yaml:"iptable"`
 	Dhcp            Dhcp    `yaml:"dhcp"`
 	Dns             Dns     `yaml:"dns"`
 	Vpn             Vpn     `yaml:"vpn"`
@@ -23,6 +24,39 @@ type Device struct {
 	Gateway    string `yaml:"gateway"`
 	ExternalIp string `yaml:"externalIp"`
 	Email      string `yaml:"email"`
+}
+
+// iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+// http://www.jamescoyle.net/cheat-sheets/375-iptables-cheat-sheet
+type RuleStatus int
+
+const ( // iota is reset to 0
+	ACCEPT RuleStatus = iota // c0 == 0
+	DROP                     // 1
+	NONE                     // 2
+)
+
+type RuleDirection int
+
+const ( // iota is reset to 0
+	INBOUND  RuleDirection = iota // c0 == 0
+	OUTBOUND                      // 1
+	NONE                          // 2
+)
+
+type Rule struct {
+	RuleStatus    RuleStatus    `yaml:"status"`
+	RuleDirection RuleDirection `yaml:"direction"`
+	Port          int           `yaml:"port"`
+	Protocol      string        `yaml:"protocl"`
+	Source        string        `yaml:"source"`
+	Destination   string        `yaml:"destination"`
+	StateMatch    string        `yaml:"statematch"`
+}
+
+type Iptable struct {
+	Enabled bool   `yaml:"enabled"`
+	Rules   []Rule `yaml:"rules"`
 }
 
 type Dhcp struct {
